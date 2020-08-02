@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="property"
+            type="com.example.realestate.model.Property" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        android:elevation="@dimen/card_view_elevation"
+        app:cardCornerRadius="@dimen/card_view_corner_radius">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/property_image_view"
+                propertyImageUrl="@{property.picFilename1Small}"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/property_image_height"
+                android:contentDescription="@string/real_estate_image"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_property_placeholder_foreground" />
+
+            <TextView
+                style="@android:style/TextAppearance.Material.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:background="@android:color/white"
+                android:elevation="@dimen/card_view_item_elevation"
+                android:paddingStart="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:paddingBottom="@dimen/padding_small"
+                android:text="@{property.price + property.currency}"
+                app:layout_constraintBottom_toBottomOf="@id/property_image_view"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="538$" />
+
+            <TextView
+                android:id="@+id/property_title_text_view"
+                style="@android:style/TextAppearance.Material.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:padding="@dimen/padding_small"
+                android:text="@{property.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/property_image_view"
+                tools:text="ErsHesug in TOP LAGE" />
+
+            <TextView
+                style="@android:style/TextAppearance.Material.Subhead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_location"
+                android:padding="@dimen/padding_small"
+                android:text="@{@string/property_full_address(property.street, property.city)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/property_title_text_view"
+                tools:text="Singerstrasse 33, Fhain" />
+
+            <ImageView
+                android:id="@+id/favourite_image_view"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:contentDescription="@string/property_favorite"
+                android:elevation="@dimen/card_view_item_elevation"
+                android:src="@{property.favourite ? @drawable/ic_favorite : @drawable/ic_favorite_white_border}"
+                app:layout_constraintBottom_toBottomOf="@id/property_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@drawable/ic_favorite" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Real Estate</string>
+    <string name="real_estate_image">real estate image</string>
+    <string name="property_full_address">%1$s, %2$s</string>
+    <string name="property_full_address_details">%1$s, %2$s, %3$s</string>
+    <string name="property_favorite">property_favorite</string>
+    <string name="properties">Properties</string>
+    <string name="property_details">Property Details</string>
+    <string name="property_details_are_not_available">Property details are not available</string>
+</resources>

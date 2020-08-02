@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="propertyDetails"
+            type="com.example.realestate.model.PropertyDetails" />
+
+        <variable
+            name="propertyDetailsNotAvailable"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/property_carousel_view"
+            showIf="@{propertyDetails != null}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/property_details_image_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/ic_property_placeholder_foreground" />
+
+        <TextView
+            android:id="@+id/property_title_text_view"
+            style="@android:style/TextAppearance.Material.Title"
+            showIf="@{propertyDetails != null}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:padding="@dimen/padding_small"
+            android:text="@{propertyDetails.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/property_carousel_view"
+            tools:text="ErsHesug in TOP LAGE" />
+
+        <TextView
+            style="@android:style/TextAppearance.Material.Subhead"
+            showIf="@{propertyDetails != null}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_location"
+            android:padding="@dimen/padding_small"
+            android:text="@{@string/property_full_address_details(propertyDetails.propertyStreet, propertyDetails.propertyCityName, propertyDetails.propertyCountry)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/property_title_text_view"
+            tools:text="Singerstrasse 33, Fhain, CH" />
+
+        <TextView
+            android:id="@+id/test_id"
+            style="@android:style/TextAppearance.Material.Headline"
+            showIf="@{propertyDetailsNotAvailable}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            android:gravity="center"
+            android:padding="@dimen/padding_small"
+            android:text="@string/property_details_are_not_available"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
